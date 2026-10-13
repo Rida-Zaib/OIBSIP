@@ -1,0 +1,28 @@
+# One-click deploy blueprint for Render (https://render.com): "New +" > "Blueprint" > pick your GitHub repo.
+services:
+  - type: web
+    name: auraauth
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/config
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: "1"
+      # DEMO MODE: no email service, so the 6-digit code is shown on screen (see README, "Demo mode").
+      # Anyone can then reset any account's password, so use it only for a coursework demo with throwaway accounts.
+      - key: DEMO_SHOW_CODES
+        value: "on"
+      # Sign-up works immediately (like the task describes); "Forgot password?" stays available.
+      - key: REQUIRE_EMAIL_VERIFICATION
+        value: "off"
+      # Optional: real emails instead of demo mode (see README). If you set these, remove DEMO_SHOW_CODES above.
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false

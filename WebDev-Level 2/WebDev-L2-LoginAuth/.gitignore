@@ -1,0 +1,35 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+*.tsbuildinfo
+
+# SECRETS: never commit these (use .env.example as the template)
+.env
+.env.*
+!.env.example
+
+# runtime data: the user database, session data and the generated secret key
+server/data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+secret.key
+users.json
+
+# logs
+*.log
+npm-debug.log*
+.npm/
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# test output
+coverage/

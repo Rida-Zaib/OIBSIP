@@ -1,0 +1,679 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-emerald-deep: #031512;
+    --color-forest: #0B3D36;
+    --color-jade: #1F6B5E;
+    --color-jade-glow: #2CA592;
+    --color-sage: #A9C9B8;
+    --color-sage-dark: #315449;
+    --color-gold: #D9B86C;
+    --color-gold-light: #F3E2A9;
+    --color-gold-deep: #9E7D30;
+    --color-ivory: #FAF4E4;
+    --color-ivory-light: #FFFDF8;
+    --color-blush: #EBC9BE;
+    --color-blush-soft: #F5DDD6;
+    --color-error: #B5483C;
+
+    /* Mouse parallax coordinates */
+    --parallax-x: 0px;
+    --parallax-y: 0px;
+  }
+
+  body {
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-emerald-deep);
+    color: var(--color-ivory);
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-title {
+    font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+    letter-spacing: 0.04em;
+  }
+
+  .font-body-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* ========================================================
+   AURORA MIST & BACKGROUND LIGHTING
+   ======================================================== */
+.celestial-scene-bg {
+  background: radial-gradient(140% 130% at 50% 8%, #104C42 0%, #072B25 45%, #031512 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Aurora Light Mist Blobs (Drifting slowly, mix-blend-mode: screen) */
+.aurora-mist-1 {
+  position: absolute;
+  top: -10%;
+  left: 15%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(44, 165, 146, 0.28) 0%, rgba(217, 184, 108, 0.15) 45%, transparent 70%);
+  filter: blur(70px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: auroraDrift1 24s ease-in-out infinite alternate;
+}
+
+.aurora-mist-2 {
+  position: absolute;
+  top: 35%;
+  right: 10%;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 226, 169, 0.22) 0%, rgba(31, 107, 94, 0.2) 50%, transparent 70%);
+  filter: blur(80px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: auroraDrift2 28s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(45px, 30px) scale(1.12); }
+  100% { transform: translate(-35px, -20px) scale(0.95); }
+}
+
+@keyframes auroraDrift2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, -35px) scale(1.15); }
+  100% { transform: translate(30px, 25px) scale(0.92); }
+}
+
+/* Fog Drift Animations for Rainy Misty Forest */
+.fog-drift-slow {
+  animation: fogDriftSlow 32s ease-in-out infinite alternate;
+}
+
+.fog-drift-reverse {
+  animation: fogDriftReverse 38s ease-in-out infinite alternate;
+}
+
+@keyframes fogDriftSlow {
+  0% { transform: translateX(-60px) scale(0.98); }
+  50% { transform: translateX(80px) scale(1.05); }
+  100% { transform: translateX(-30px) scale(1); }
+}
+
+@keyframes fogDriftReverse {
+  0% { transform: translateX(70px) scale(1.02); }
+  50% { transform: translateX(-90px) scale(0.96); }
+  100% { transform: translateX(40px) scale(1.01); }
+}
+
+/* Big Soft Radial Teal Glow Centered Behind Card */
+.card-radial-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(44, 165, 146, 0.25) 0%, rgba(217, 184, 108, 0.2) 30%, rgba(11, 61, 54, 0.15) 55%, transparent 75%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Layered Parallax Wrappers */
+.parallax-back {
+  transform: translate(calc(var(--parallax-x) * 0.02), calc(var(--parallax-y) * 0.02));
+  transition: transform 0.2s cubic-bezier(0.1, 1, 0.2, 1);
+}
+
+.parallax-mid {
+  transform: translate(calc(var(--parallax-x) * 0.04), calc(var(--parallax-y) * 0.04));
+  transition: transform 0.2s cubic-bezier(0.1, 1, 0.2, 1);
+}
+
+.parallax-front {
+  transform: translate(calc(var(--parallax-x) * 0.06), calc(var(--parallax-y) * 0.06));
+  transition: transform 0.2s cubic-bezier(0.1, 1, 0.2, 1);
+}
+
+/* ========================================================
+   GLOSSY CHAMPAGNE-GOLD RIBBON ANIMATIONS
+   ======================================================== */
+.ribbon-wave-1 {
+  animation: ribbonWaveMotion1 20s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.ribbon-wave-2 {
+  animation: ribbonWaveMotion2 24s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.ribbon-shimmer-sweep {
+  animation: shimmerGlowPulse 7s ease-in-out infinite alternate;
+}
+
+@keyframes ribbonWaveMotion1 {
+  0% { transform: translateY(0px) rotate(0deg) scale(1); }
+  50% { transform: translateY(-16px) rotate(0.8deg) scale(1.025); }
+  100% { transform: translateY(12px) rotate(-0.6deg) scale(0.985); }
+}
+
+@keyframes ribbonWaveMotion2 {
+  0% { transform: translateY(0px) rotate(0deg) scale(1); }
+  50% { transform: translateY(18px) rotate(-1deg) scale(1.03); }
+  100% { transform: translateY(-14px) rotate(0.7deg) scale(0.98); }
+}
+
+@keyframes shimmerGlowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 14px rgba(217, 184, 108, 0.5));
+    opacity: 0.9;
+  }
+  50% {
+    filter: drop-shadow(0 0 28px rgba(243, 226, 169, 0.85));
+    opacity: 1;
+  }
+}
+
+/* Rising Fireflies / Floating Gold Particles */
+.firefly-particle {
+  animation: fireflyFloat 8s ease-in-out infinite;
+}
+
+@keyframes fireflyFloat {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.95;
+    transform: translateY(-25px) translateX(8px) scale(1.1);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-65px) translateX(-12px) scale(0.9);
+  }
+  90% {
+    opacity: 0.3;
+    transform: translateY(-105px) translateX(6px) scale(0.7);
+  }
+  100% {
+    transform: translateY(-120px) translateX(0) scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* ========================================================
+   THE ENCHANTED CELESTIAL AUTH CARD
+   ======================================================== */
+.enchanted-card-entrance {
+  animation: cardEntrance 0.9s cubic-bezier(0.34, 1.28, 0.64, 1) both;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.94);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Card Outer Breathing Halo & Glow */
+.enchanted-card-halo {
+  animation: cardGlowPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes cardGlowPulse {
+  0% {
+    box-shadow: 
+      inset 0 0 0 6px #FAF4E4,
+      inset 0 0 0 8px rgba(31, 107, 94, 0.45),
+      0 20px 65px -15px rgba(1, 14, 12, 0.92),
+      0 0 35px rgba(217, 184, 108, 0.22);
+  }
+  50% {
+    box-shadow: 
+      inset 0 0 0 6px #FAF4E4,
+      inset 0 0 0 8px rgba(31, 107, 94, 0.6),
+      0 26px 80px -10px rgba(1, 14, 12, 0.98),
+      0 0 65px rgba(243, 226, 169, 0.45);
+  }
+  100% {
+    box-shadow: 
+      inset 0 0 0 6px #FAF4E4,
+      inset 0 0 0 8px rgba(31, 107, 94, 0.45),
+      0 20px 65px -15px rgba(1, 14, 12, 0.92),
+      0 0 35px rgba(217, 184, 108, 0.22);
+  }
+}
+
+/* Warm Ivory to Champagne Gradient Card Body */
+.enchanted-card-surface {
+  background: linear-gradient(172deg, #FFFDF8 0%, #FAF4E4 55%, #F4E9D5 100%);
+  border-radius: 32px;
+  border: 2px solid var(--color-gold);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: #031512;
+}
+
+/* Subtle Dotted Inner Border Line */
+.enchanted-card-surface::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 22px;
+  border: 1px dotted rgba(217, 184, 108, 0.7);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Symmetrical Botanical Foliage Gentle Sway */
+.sway-botanical-left {
+  animation: botanicalSwayLeft 12s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+.sway-botanical-right {
+  animation: botanicalSwayRight 12s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes botanicalSwayLeft {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(-1.6deg) translateY(-2.5px); }
+  100% { transform: rotate(1deg) translateY(1.5px); }
+}
+
+@keyframes botanicalSwayRight {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(1.6deg) translateY(-2.5px); }
+  100% { transform: rotate(-1deg) translateY(1.5px); }
+}
+
+/* Rotating Inner Emblem Ring */
+.emblem-ring-rotate {
+  animation: rotateEmblemRing 35s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotateEmblemRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Emblem Sparkle Soft Bursts */
+.emblem-sparkle-burst {
+  animation: sparkleBurst 4s ease-in-out infinite alternate;
+}
+
+@keyframes sparkleBurst {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(243, 226, 169, 0.9));
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+}
+
+/* Failed Login Shake */
+.card-shake {
+  animation: gentleShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes gentleShake {
+  10%, 90% { transform: translate3d(-3px, 0, 0); }
+  20%, 80% { transform: translate3d(5px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+  40%, 60% { transform: translate3d(6px, 0, 0); }
+}
+
+/* Fairy Lights Draping Along Top Edge */
+.fairy-light-dot {
+  animation: fairyLightGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes fairyLightGlow {
+  0% { opacity: 0.45; filter: drop-shadow(0 0 2px rgba(217, 184, 108, 0.4)); }
+  100% { opacity: 1; filter: drop-shadow(0 0 6px rgba(243, 226, 169, 0.95)); }
+}
+
+/* ========================================================
+   FORM INPUTS, ORNATE EYE TOGGLE & GLOSSY BUTTON
+   ======================================================== */
+.pill-input {
+  background-color: #FFFDF9;
+  border: 1.5px solid var(--color-jade);
+  border-radius: 9999px;
+  padding: 0.82rem 1.35rem 0.82rem 2.95rem;
+  color: #031512;
+  font-size: 0.95rem;
+  font-weight: 500;
+  width: 100%;
+  transition: all 0.25s ease;
+}
+
+.pill-input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3.5px rgba(217, 184, 108, 0.4);
+  background-color: #FFFFFF;
+}
+
+.pill-input::placeholder {
+  color: #6C8E84;
+  font-weight: 400;
+}
+
+.pill-input.input-error {
+  border-color: var(--color-error) !important;
+  box-shadow: 0 0 0 3px rgba(181, 72, 60, 0.25) !important;
+}
+
+/* Focus Sparkle on Input Icon */
+.input-group:focus-within .input-icon-svg {
+  filter: drop-shadow(0 0 5px rgba(243, 226, 169, 0.9));
+  color: var(--color-gold-light);
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+/* Ornate Eye Button Toggle */
+.ornate-eye-toggle {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(31, 107, 94, 0.08);
+  border: 1px solid rgba(217, 184, 108, 0.5);
+  color: #1F6B5E;
+  transition: all 0.22s ease;
+  cursor: pointer;
+}
+
+.ornate-eye-toggle:hover {
+  background: rgba(217, 184, 108, 0.22);
+  border-color: var(--color-gold);
+  color: #0B3D36;
+  box-shadow: 0 0 10px rgba(217, 184, 108, 0.4);
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* Primary Button: Pill, Emerald-to-Jade Gradient, Gold Border, Glossy Shimmer */
+.btn-primary-emerald {
+  position: relative;
+  background: linear-gradient(135deg, #09332D 0%, #114C42 50%, #1F6B5E 100%);
+  color: var(--color-gold-light);
+  border-radius: 9999px;
+  border: 1.6px solid var(--color-gold);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.9rem 1.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 
+    0 6px 22px rgba(3, 21, 18, 0.55),
+    0 0 18px rgba(217, 184, 108, 0.28);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  width: 100%;
+  overflow: hidden;
+}
+
+.btn-primary-emerald::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 253, 248, 0.4), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.8s ease;
+  pointer-events: none;
+}
+
+.btn-primary-emerald:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0C3E37 0%, #17584E 50%, #257D6E 100%);
+  transform: translateY(-2px);
+  color: #FFFDF8;
+  border-color: var(--color-gold-light);
+  box-shadow: 
+    0 10px 28px rgba(3, 21, 18, 0.7),
+    0 0 28px rgba(217, 184, 108, 0.55);
+}
+
+.btn-primary-emerald:hover:not(:disabled)::before {
+  left: 150%;
+}
+
+.btn-primary-emerald:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(3, 21, 18, 0.45);
+}
+
+.btn-primary-emerald:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none;
+}
+
+/* Pill Error & Success Alerts */
+.pill-error-alert {
+  background: rgba(181, 72, 60, 0.12);
+  border: 1px solid rgba(181, 72, 60, 0.45);
+  color: #8C291E;
+  border-radius: 9999px;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  animation: fadeInDown 0.3s ease;
+}
+
+.pill-success-alert {
+  background: rgba(31, 107, 94, 0.15);
+  border: 1px solid rgba(31, 107, 94, 0.5);
+  color: #0A3C34;
+  border-radius: 9999px;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  animation: fadeInDown 0.3s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================================
+   DASHBOARD GLASS PANELS
+   ======================================================== */
+.dashboard-glass-panel {
+  background: rgba(11, 61, 54, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.2px solid rgba(217, 184, 108, 0.4);
+  border-radius: 26px;
+  box-shadow: 
+    0 22px 55px rgba(2, 16, 14, 0.65),
+    0 0 35px rgba(217, 184, 108, 0.14);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dashboard-glass-panel:hover {
+  border-color: rgba(217, 184, 108, 0.65);
+  box-shadow: 
+    0 26px 65px rgba(2, 16, 14, 0.8),
+    0 0 42px rgba(217, 184, 108, 0.25);
+}
+
+.btn-gold-pill-logout {
+  background: rgba(3, 21, 18, 0.85);
+  color: var(--color-gold-light);
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-gold);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.75rem 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-gold-pill-logout:hover {
+  background: linear-gradient(135deg, #0B3D36 0%, #1F6B5E 100%);
+  color: #FFFDF8;
+  border-color: var(--color-gold-light);
+  box-shadow: 0 6px 22px rgba(217, 184, 108, 0.4);
+  transform: translateY(-1.5px);
+}
+
+/* ========================================================
+   LIVE PASSWORD CHECKLIST & STRENGTH METER
+   ======================================================== */
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.825rem;
+  color: #315449;
+  transition: all 0.2s ease;
+}
+
+.checklist-item.valid {
+  color: #0C4E42;
+  font-weight: 600;
+}
+
+.checklist-icon {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #1F6B5E;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.checklist-item.valid .checklist-icon {
+  border-color: #1F6B5E;
+  background-color: #1F6B5E;
+  color: #FAF4E4;
+}
+
+.strength-bar-track {
+  height: 5px;
+  background-color: rgba(31, 107, 94, 0.18);
+  border-radius: 9999px;
+  overflow: hidden;
+  display: flex;
+  gap: 3px;
+}
+
+.strength-bar-seg {
+  height: 100%;
+  flex: 1;
+  border-radius: 9999px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ========================================================
+   CHECKLIST STATES: invalid (red) / pending (checking) + spinner
+   ======================================================== */
+.checklist-item.invalid {
+  color: #8E2F25;
+  font-weight: 600;
+}
+.checklist-item.invalid .checklist-icon {
+  border-color: #B5483C;
+  background-color: #B5483C;
+  color: #FAF4E4;
+  font-size: 13px;
+  line-height: 1;
+}
+.checklist-item.pending {
+  color: #6B5A1E;
+}
+.checklist-item.pending .checklist-icon {
+  border-color: #D9B86C;
+  color: #8A6A1A;
+}
+.checklist-spinner {
+  border-color: rgba(217, 184, 108, 0.35) !important;
+  border-top-color: #D9B86C !important;
+  animation: checklist-spin 0.8s linear infinite;
+}
+@keyframes checklist-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .checklist-spinner {
+    animation: none;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "AuraAuth - Secure Authentication System",
+  "description": "A secure client-side authentication system with Web Crypto SHA-256 salted hashing, live validation, session management, and an ornate emerald & gold celestial UI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
